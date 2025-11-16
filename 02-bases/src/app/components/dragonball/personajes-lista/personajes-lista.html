@@ -1,0 +1,19 @@
+<h3>{{ tituloLista }}</h3>
+<h5>Los personajes con poder mayor o igual a {{ poderFuerte() }}</h5>
+<ul>
+  @for (pers of personajes(); track pers.id; let indice = $index, par = $even) {
+  <li>
+    @if(pers.poder >= poderFuerte()) {
+    <span>{{ indice }} Par:: {{ par }} - {{ pers.nombre }}</span>
+    <strong
+      [class.text-danger]="pers.poder >= 13000"
+      [class.text-info]="pers.poder < 13000"
+    >
+      ({{ pers.poder }})</strong
+    >
+    } @else {
+    <strong>personaje debil</strong>
+    }
+  </li>
+  }
+</ul>
